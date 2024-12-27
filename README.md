@@ -9,14 +9,14 @@ $ bin/bootstrap
 
 ## What this includes
 
- - Developer tools:
+ - 👨‍💻 Developer tools:
    - DataGrip (https://www.jetbrains.com/datagrip)
    - Visual Studio Code (https://code.visualstudio.com/)
      - gitlens
      - code spell checker
      - vscode todo plus
-   - xCode
-   - Terminal
+   - 💻 xCode
+   - 🖥️ Terminal
      - iterm2 (https://iterm2.com/)  
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - Terminal commands
@@ -30,14 +30,14 @@ $ bin/bootstrap
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)
- - Browsers
+ - 🌐 Browsers
    - Brave Browser (https://brave.com/)
    - Arc (https://arc.net/)
- - Productivity Tools
+ - 📈 Productivity Tools
    - Notion (https://www.notion.com/)
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
  
-### Dock clean up
+### Dock clean up 🧹
 
 As I find the default MacOS dock is cluttered, this playbook will also remove the following from the dock:
 - Keynote
