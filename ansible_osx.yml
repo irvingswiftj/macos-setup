@@ -116,8 +116,8 @@
     - name: "Install Default Python"
       shell: |
         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf install python 3.10.0
-        asdf global python 3.10.0
+        asdf install python 3.13.1
+        asdf global python 3.13.1
         pip3 install ansible
         asdf reshim python
 
@@ -125,5 +125,5 @@
       shell: |
         source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
         bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
-        asdf install nodejs 16.4.2
-        asdf global nodejs 16.4.2
+        asdf install nodejs 22.12.0
+        asdf global nodejs 22.12.0
