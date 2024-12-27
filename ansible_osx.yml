@@ -41,6 +41,7 @@
           'fzf',
           'imagemagick@6',
           'mas',
+          'gh',
         ]
         state: present
         update_homebrew: yes

@@ -26,6 +26,7 @@ $ bin/bootstrap
        - mas (install app store packages from command-line)
        - dockutil (manage osx dock from command-line)
        - asdf (managed versions of node, ruby, python, etc)
+       - gh (github-cli)
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)
