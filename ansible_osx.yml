@@ -45,6 +45,9 @@
         state: present
         update_homebrew: yes
 
+    - name: Source bash profile.
+      shell: source $HOME/.profile
+
     - name: "Install from Mac app store"
       shell: mas install {{ item }}
       with_items:
