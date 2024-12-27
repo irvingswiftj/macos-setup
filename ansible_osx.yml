@@ -1,0 +1,126 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install homebrew
+      include_role:
+        name: geerlingguy.mac.homebrew
+
+    - name: Make sure homebrew bin is in path
+      ansible.builtin.lineinfile:
+        path: /etc/paths
+        state: present
+        line: '/opt/homebrew/bin'
+      become: true
+      become_user: root
+
+    - name: 'add custom homebrew repos'
+      community.general.homebrew_tap:
+        name: [
+          #homebrew/cask-versions,
+        ]
+
+    - name: Install core packages via brew casks
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+      ignore_errors: yes
+      with_items:
+        - warp
+        - brave-browser
+        - arc
+        - notion
+        - datagrip
+        - iterm2
+        - visual-studio-code
+        - superhuman
+
+    - name: "Install homebrew packages"
+      community.general.homebrew:
+        name: [
+          'tree',
+          'dockutil',
+          'fzf',
+          'imagemagick@6',
+          'mas',
+        ]
+        state: present
+        update_homebrew: yes
+
+    - name: "Install from Mac app store"
+      shell: mas install {{ item }}
+      with_items:
+        - 497799835 # xcode
+
+    # Clean up dock
+    - name: Clean up dock
+      shell: dockutil --remove '{{ item }}'
+      with_items:
+        - Keynote
+        - Numbers
+        - Pages
+        - Freeform
+        - Contacts
+        - Maps
+        - Mail
+        - Messages
+        - Notes
+        - TV
+        - App Store
+        - Safari
+        - System Settings
+        - FaceTime
+      ignore_errors: true
+
+    - name: Install Oh My ZSH
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      args:
+        creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+
+    - name: "Create a default ZSH configuration"
+      template:
+        src: templates/.zshrc.j2
+        dest: /Users/{{ lookup('env', 'USER') }}/.zshrc
+        owner: "{{ lookup('env', 'USER') }}"
+        force: yes
+
+    # Add something which ensures path is set here
+    - name: Install VSCode extensions
+      shell: code --install-extension {{ item }}
+      with_items:
+        - eamodio.gitlens
+        - streetsidesoftware.code-spell-checker
+        - fabiospampinato.vscode-todo-plus
+
+    - git:
+        repo: https://github.com/asdf-vm/asdf.git
+        dest: "/Users/{{ lookup('env', 'USER') }}/.asdf"
+        version: v0.8.1
+
+    - name: "Create a default asdf configuration"
+      template:
+        src: templates/.asdfrc.j2
+        dest: /Users/{{ lookup('env', 'USER') }}/.asdfrc
+        owner: "{{ lookup('env', 'USER') }}"
+        force: yes
+
+    - name: "Install asdf plugins"
+      shell: |
+        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+        asdf plugin-add {{ item }} || exit 0
+      with_items:
+        - nodejs
+        - python
+
+    - name: "Install Default Python"
+      shell: |
+        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+        asdf install python 3.10.0
+        asdf global python 3.10.0
+        pip3 install ansible
+        asdf reshim python
+
+    - name: "Install default node"
+      shell: |
+        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
+        bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
+        asdf install nodejs 16.4.2
+        asdf global nodejs 16.4.2
