@@ -46,7 +46,7 @@
         update_homebrew: yes
 
     - name: Source bash profile.
-      shell: source $HOME/.profile
+      shell: source $HOME/.zshrc
 
     - name: "Install from Mac app store"
       shell: mas install {{ item }}
