@@ -36,6 +36,7 @@ $ bin/bootstrap
  - 📈 Productivity Tools
    - Notion (https://www.notion.com/)
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
+   - Whatsapp (https://www.whatsapp.com/)
  
 ### Dock clean up 🧹
 

@@ -32,6 +32,7 @@
         - iterm2
         - visual-studio-code
         - superhuman
+        - whatsapp
 
     - name: "Install homebrew packages"
       community.general.homebrew:
