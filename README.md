@@ -37,6 +37,7 @@ $ bin/bootstrap
    - Notion (https://www.notion.com/)
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
    - Whatsapp (https://www.whatsapp.com/)
+   - ChatGPT (https://openai.com/index/chatgpt/)
  
 ### Dock clean up 🧹
 

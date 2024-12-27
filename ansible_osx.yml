@@ -33,6 +33,7 @@
         - visual-studio-code
         - superhuman
         - whatsapp
+        - chatgpt
 
     - name: "Install homebrew packages"
       community.general.homebrew:
