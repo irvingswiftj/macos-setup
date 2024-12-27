@@ -1,5 +1,8 @@
 # Swifty's MacOS setup
 
+Resources:
+Article about how to run: https://irving-swift.com/setup-your-mac-with-ansible/
+
 ## How to run
 
 ```
