@@ -44,7 +44,8 @@
           'imagemagick@6',
           'mas',
           'gh',
-	  'pnpm',
+          'focusrite-control',
+          'pnpm',
         ]
         state: present
         update_homebrew: yes
