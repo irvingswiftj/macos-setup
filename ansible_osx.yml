@@ -44,6 +44,7 @@
           'imagemagick@6',
           'mas',
           'gh',
+	  'pnpm',
         ]
         state: present
         update_homebrew: yes
