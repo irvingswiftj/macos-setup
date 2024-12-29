@@ -34,6 +34,7 @@ $ bin/bootstrap
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)
+       - EAS CLI (for using Expo application services)
  - 🌐 Browsers
    - Brave Browser (https://brave.com/)
    - Arc (https://arc.net/)
@@ -68,3 +69,13 @@ Currently, I have no need for the following packages and thus I have omitted the
 
 - Docker
 - Kubernetes
+
+## Known Issues
+
+### PNPM error
+
+```
+ERR_PNPM_NO_GLOBAL_BIN_DIR  Unable to find the global bin directory\n\nRun \"pnpm setup\" to create it automatically, or set the global-bin-dir setting, or the PNPM_HOME env variable. The global bin directory should be in the PATH.\n
+```
+
+For some reason, `source ~/.zshrc` doesn't always seem to do the trick, if you get this error, just close your shell, open a new one and run `bin/apply`. 

@@ -131,3 +131,14 @@
         bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
         asdf install nodejs 22.12.0
         asdf global nodejs 22.12.0
+
+    - name: Run pnpm setup
+      shell: pnpm setup
+
+    - name: Source bash profile.
+      shell: source $HOME/.zshrc
+
+    - name: Install EAS CLI node.js package.
+      community.general.pnpm:
+        name: eas-cli
+        global: true
