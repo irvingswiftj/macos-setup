@@ -58,6 +58,16 @@
       with_items:
         - 497799835 # xcode
 
+    - name: "Uninstall from Mac app store"
+      shell: mas uninstall {{ item }}
+      with_items:
+      - 409183694 #keynote
+      - 409203825 #numbers
+      - 409201541 #pages
+      - 408981434 #imovie
+      become: true
+      ignore_errors: true
+
     # Clean up dock
     - name: Clean up dock
       shell: dockutil --remove '{{ item }}'

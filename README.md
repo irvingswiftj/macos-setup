@@ -64,6 +64,15 @@ As I find the default MacOS dock is cluttered, this playbook will also remove th
 - System Settings
 - FaceTime
 
+### Default software clean up
+
+This script also removed the following:
+- Keynote
+- Numbers
+- Pages
+- iMovie
+
+After the script is complete, you will have to empty the Trash.
  
 ## What could be considered missing?
 
