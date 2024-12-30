@@ -22,6 +22,7 @@ $ bin/bootstrap
    - 🖥️ Terminal
      - iterm2 (https://iterm2.com/)  
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
+     - Ghostty (I'm trying it out at the moment since v1 came out! https://ghostty.org/)
      - Terminal commands
        - fzf (Fuzzy Finder)
        - tree (view folders in a tree-like structure from your terminal)
@@ -47,6 +48,7 @@ $ bin/bootstrap
    - Scarlet 2i2 Driver
  - 🛠️ Utilities
    - Mos (https://mos.caldis.me)
+   - Raycast (https://www.raycast.com/store)
  
 ### Dock clean up 🧹
 

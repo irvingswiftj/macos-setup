@@ -35,6 +35,8 @@
         - whatsapp
         - chatgpt
         - mos
+        - ghostty
+        - raycast
 
     - name: "Install homebrew packages"
       community.general.homebrew:
