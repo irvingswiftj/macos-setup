@@ -45,6 +45,8 @@ $ bin/bootstrap
    - ChatGPT (https://openai.com/index/chatgpt/)
  - 🎼 Music Tools
    - Scarlet 2i2 Driver
+ - 🛠️ Utilities
+   - Mos (https://mos.caldis.me)
  
 ### Dock clean up 🧹
 

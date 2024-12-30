@@ -34,6 +34,7 @@
         - superhuman
         - whatsapp
         - chatgpt
+        - mos
 
     - name: "Install homebrew packages"
       community.general.homebrew:
