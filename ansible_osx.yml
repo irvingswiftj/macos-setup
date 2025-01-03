@@ -37,6 +37,7 @@
         - mos
         - ghostty
         - raycast
+        - google-drive
 
     - name: "Install homebrew packages"
       community.general.homebrew:

@@ -44,6 +44,7 @@ $ bin/bootstrap
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
    - Whatsapp (https://www.whatsapp.com/)
    - ChatGPT (https://openai.com/index/chatgpt/)
+   - Google Drive
  - 🎼 Music Tools
    - Scarlet 2i2 Driver
  - 🛠️ Utilities
