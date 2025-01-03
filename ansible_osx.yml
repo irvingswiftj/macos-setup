@@ -38,6 +38,7 @@
         - ghostty
         - raycast
         - google-drive
+        - android-studio
 
     - name: "Install homebrew packages"
       community.general.homebrew:

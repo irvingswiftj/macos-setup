@@ -19,6 +19,7 @@ $ bin/bootstrap
      - code spell checker
      - vscode todo plus
    - 💻 xCode
+   - 📱 Android Studio
    - 🖥️ Terminal
      - iterm2 (https://iterm2.com/)  
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
