@@ -39,6 +39,7 @@
         - raycast
         - google-drive
         - android-studio
+        - postman
 
     - name: "Install homebrew packages"
       community.general.homebrew:

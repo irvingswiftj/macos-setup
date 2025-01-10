@@ -20,6 +20,7 @@ $ bin/bootstrap
      - vscode todo plus
    - 💻 xCode
    - 📱 Android Studio
+   - 🚀 Postman
    - 🖥️ Terminal
      - iterm2 (https://iterm2.com/)  
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
