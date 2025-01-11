@@ -22,9 +22,9 @@ $ bin/bootstrap
    - 📱 Android Studio
    - 🚀 Postman
    - 🖥️ Terminal
-     - iterm2 (https://iterm2.com/)  
+     - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
-     - Ghostty (I'm trying it out at the moment since v1 came out! https://ghostty.org/)
+     - Ghostty (https://ghostty.org/)
      - Terminal commands
        - fzf (Fuzzy Finder)
        - tree (view folders in a tree-like structure from your terminal)
