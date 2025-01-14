@@ -47,6 +47,7 @@ $ bin/bootstrap
    - Whatsapp (https://www.whatsapp.com/)
    - ChatGPT (https://openai.com/index/chatgpt/)
    - Google Drive
+   - Slack
  - 🎼 Music Tools
    - Scarlet 2i2 Driver
  - 🛠️ Utilities

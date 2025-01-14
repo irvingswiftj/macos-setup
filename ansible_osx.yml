@@ -39,6 +39,7 @@
         - google-drive
         - android-studio
         - postman
+        - slack
 
     - name: "Install homebrew packages"
       community.general.homebrew:
