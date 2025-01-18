@@ -34,6 +34,7 @@ $ bin/bootstrap
        - asdf (managed versions of node, ruby, python, etc)
        - gh (github-cli)
        - pnpm (my node package manager of choice)
+       - gitmoji (Great for cleaner git commit messages with emojis)
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)
