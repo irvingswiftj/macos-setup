@@ -52,6 +52,7 @@
           'gh',
           'focusrite-control',
           'pnpm',
+          'gitmoji',
         ]
         state: present
         update_homebrew: yes
