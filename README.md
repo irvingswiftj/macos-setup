@@ -35,6 +35,7 @@ $ bin/bootstrap
        - gh (github-cli)
        - pnpm (my node package manager of choice)
        - gitmoji (Great for cleaner git commit messages with emojis)
+       - neovim 
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)

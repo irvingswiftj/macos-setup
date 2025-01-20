@@ -53,6 +53,7 @@
           'focusrite-control',
           'pnpm',
           'gitmoji',
+          'neovim',
         ]
         state: present
         update_homebrew: yes
