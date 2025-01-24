@@ -36,6 +36,7 @@ $ bin/bootstrap
        - pnpm (my node package manager of choice)
        - gitmoji (Great for cleaner git commit messages with emojis)
        - neovim 
+       - ffmpeg
    - Programming Languages
      - Python (3.13.1)
      - nodejs (22.12.0)

@@ -54,6 +54,7 @@
           'pnpm',
           'gitmoji',
           'neovim',
+          'ffmpeg'
         ]
         state: present
         update_homebrew: yes
