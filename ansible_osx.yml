@@ -40,6 +40,7 @@
         - android-studio
         - postman
         - slack
+        - docker
 
     - name: "Install homebrew packages"
       community.general.homebrew:
