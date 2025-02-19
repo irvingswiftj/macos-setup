@@ -55,7 +55,8 @@
           'pnpm',
           'gitmoji',
           'neovim',
-          'ffmpeg'
+          'ffmpeg',
+          'mysql-client'
         ]
         state: present
         update_homebrew: yes
