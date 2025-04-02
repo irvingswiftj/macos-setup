@@ -51,12 +51,14 @@
           'imagemagick@6',
           'mas',
           'gh',
+          'go',
           'focusrite-control',
           'pnpm',
           'gitmoji',
           'neovim',
           'ffmpeg',
-          'mysql-client'
+          'mysql-client',
+          'uv',
         ]
         state: present
         update_homebrew: yes
