@@ -27,6 +27,7 @@ $ bin/bootstrap
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - Ghostty (https://ghostty.org/)
      - Terminal commands
+       - doctl (CLI for Digital Ocean)
        - fzf (Fuzzy Finder)
        - tree (view folders in a tree-like structure from your terminal)
        - imagemagick (manipulate images from terminal)

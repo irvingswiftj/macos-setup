@@ -45,6 +45,7 @@
     - name: "Install homebrew packages"
       community.general.homebrew:
         name: [
+          'doctl',
           'tree',
           'dockutil',
           'fzf',
