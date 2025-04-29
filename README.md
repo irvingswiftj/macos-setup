@@ -21,7 +21,7 @@ $ bin/bootstrap
    - 💻 xCode
    - 📱 Android Studio
    - 🚀 Postman
-   - 🐳 Docker Desktop
+   - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
      - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)

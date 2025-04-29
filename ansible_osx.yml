@@ -40,7 +40,7 @@
         - android-studio
         - postman
         - slack
-        - docker
+        - orbstack
 
     - name: "Install homebrew packages"
       community.general.homebrew:
