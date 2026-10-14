@@ -26,6 +26,7 @@ $ bin/bootstrap
      - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - Ghostty (https://ghostty.org/)
+     - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
      - Terminal commands
        - doctl (CLI for Digital Ocean)
        - fzf (Fuzzy Finder)
@@ -52,6 +53,7 @@ $ bin/bootstrap
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
    - Whatsapp (https://www.whatsapp.com/)
    - ChatGPT (https://openai.com/index/chatgpt/)
+   - Claude (https://claude.com/download)
    - Google Drive
    - Slack
  - 🎼 Music Tools
@@ -59,6 +61,7 @@ $ bin/bootstrap
  - 🛠️ Utilities
    - Mos (https://mos.caldis.me)
    - Raycast (https://www.raycast.com/store)
+   - Vorssaint (https://github.com/vorssaint/vorssaint-utils) - Menu bar toolkit with keep-awake, system monitor and volume mixer
  
 ### Dock clean up 🧹
 
