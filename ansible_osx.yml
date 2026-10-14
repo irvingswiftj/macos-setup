@@ -122,6 +122,7 @@
 
     - name: Install latest LTS node via nvm
       shell: |
+        export NVM_DIR="$HOME/.nvm"
         source /opt/homebrew/opt/nvm/nvm.sh
         nvm install --lts
         nvm alias default 'lts/*'
