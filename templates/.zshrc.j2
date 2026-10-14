@@ -33,8 +33,18 @@ source $ZSH/oh-my-zsh.sh
 # Most ZSH config e.g. aliases etc goes here
 if [ -f ~/.zshrc.personal.after ]; then . ~/.zshrc.personal.after; fi
 
-# Load asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
 export PATH="/opt/homebrew/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/swifty/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias claude="/Users/swifty/.claude/local/claude"

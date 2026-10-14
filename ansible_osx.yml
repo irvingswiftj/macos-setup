@@ -25,20 +25,13 @@
       ignore_errors: yes
       with_items:
         - warp
-        - brave-browser
-        - arc
-        - notion
         - datagrip
-        - visual-studio-code
         - superhuman
         - whatsapp
-        - chatgpt
-        - mos
         - ghostty
         - raycast
         - google-drive
         - android-studio
-        - postman
         - slack
         - orbstack
 
@@ -60,6 +53,10 @@
           'ffmpeg',
           'mysql-client',
           'uv',
+          'fastlane',
+          'python3',
+          'openai-whisper',
+          'zed'
         ]
         state: present
         update_homebrew: yes
@@ -113,49 +110,6 @@
         dest: /Users/{{ lookup('env', 'USER') }}/.zshrc
         owner: "{{ lookup('env', 'USER') }}"
         force: yes
-
-    # Add something which ensures path is set here
-    - name: Install VSCode extensions
-      shell: code --install-extension {{ item }}
-      with_items:
-        - eamodio.gitlens
-        - streetsidesoftware.code-spell-checker
-        - fabiospampinato.vscode-todo-plus
-
-    - git:
-        repo: https://github.com/asdf-vm/asdf.git
-        dest: "/Users/{{ lookup('env', 'USER') }}/.asdf"
-        version: v0.8.1
-
-    - name: "Create a default asdf configuration"
-      template:
-        src: templates/.asdfrc.j2
-        dest: /Users/{{ lookup('env', 'USER') }}/.asdfrc
-        owner: "{{ lookup('env', 'USER') }}"
-        force: yes
-
-    - name: "Install asdf plugins"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf plugin-add {{ item }} || exit 0
-      with_items:
-        - nodejs
-        - python
-
-    - name: "Install Default Python"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        asdf install python 3.13.1
-        asdf global python 3.13.1
-        pip3 install ansible
-        asdf reshim python
-
-    - name: "Install default node"
-      shell: |
-        source /Users/{{ lookup('env', 'USER') }}/.asdf/asdf.sh
-        bash /Users/{{ lookup('env', 'USER') }}/.asdf/plugins/nodejs/bin/import-release-team-keyring
-        asdf install nodejs 22.12.0
-        asdf global nodejs 22.12.0
 
     - name: Run pnpm setup
       shell: pnpm setup
