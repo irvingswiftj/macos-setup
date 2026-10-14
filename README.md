@@ -46,6 +46,7 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
      - Python 3 (via Homebrew)
        - uv (fast Python package installer and resolver)
      - Go
+     - nodejs (latest LTS, managed with nvm)
  - 📈 Productivity Tools
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
    - Whatsapp (https://www.whatsapp.com/)
