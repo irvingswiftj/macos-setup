@@ -6,27 +6,26 @@ Article about how to run: https://irving-swift.com/setup-your-mac-with-ansible/
 ## How to run
 
 ```
-$ ./setup
+$ ./setup.sh
 $ bin/bootstrap
 ```
+
+To re-run the playbook later (e.g. after adding software), run `bin/apply`.
 
 ## What this includes
 
  - 👨‍💻 Developer tools:
    - DataGrip (https://www.jetbrains.com/datagrip)
-   - Visual Studio Code (https://code.visualstudio.com/)
-     - gitlens
-     - code spell checker
-     - vscode todo plus
+   - Zed (https://zed.dev/)
    - 💻 xCode
    - 📱 Android Studio
-   - 🚀 Postman
    - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
      - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - Ghostty (https://ghostty.org/)
      - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+     - Oh My Zsh with a generated `~/.zshrc` (put personal config in `~/.zshrc.personal.before` / `~/.zshrc.personal.after`)
      - Terminal commands
        - doctl (CLI for Digital Ocean)
        - fzf (Fuzzy Finder)
@@ -34,35 +33,31 @@ $ bin/bootstrap
        - imagemagick (manipulate images from terminal)
        - mas (install app store packages from command-line)
        - dockutil (manage osx dock from command-line)
-       - asdf (managed versions of node, ruby, python, etc)
        - gh (github-cli)
        - pnpm (my node package manager of choice)
+         - EAS CLI (for using Expo application services)
        - gitmoji (Great for cleaner git commit messages with emojis)
-       - neovim 
+       - neovim
        - ffmpeg
        - mysql-client
+       - fastlane (build and release mobile apps)
+       - openai-whisper (speech recognition from the terminal)
    - Programming Languages
-     - Python (3.13.1)
-     - nodejs (22.12.0)
-       - EAS CLI (for using Expo application services)
- - 🌐 Browsers
-   - Brave Browser (https://brave.com/)
-   - Arc (https://arc.net/)
+     - Python 3 (via Homebrew)
+       - uv (fast Python package installer and resolver)
+     - Go
  - 📈 Productivity Tools
-   - Notion (https://www.notion.com/)
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
    - Whatsapp (https://www.whatsapp.com/)
-   - ChatGPT (https://openai.com/index/chatgpt/)
    - Claude (https://claude.com/download)
    - Google Drive
    - Slack
  - 🎼 Music Tools
-   - Scarlet 2i2 Driver
+   - Focusrite Control (Scarlett 2i2 driver)
  - 🛠️ Utilities
-   - Mos (https://mos.caldis.me)
    - Raycast (https://www.raycast.com/store)
    - Vorssaint (https://github.com/vorssaint/vorssaint-utils) - Menu bar toolkit with keep-awake, system monitor and volume mixer
- 
+
 ### Dock clean up 🧹
 
 As I find the default MacOS dock is cluttered, this playbook will also remove the following from the dock:
@@ -95,7 +90,7 @@ After the script is complete, you will have to empty the Trash.
 
 Currently, I have no need for the following packages and thus I have omitted them
 
-- Docker
+- Docker Desktop (replaced by OrbStack)
 - Kubernetes
 
 ## Known Issues
