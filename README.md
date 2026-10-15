@@ -27,7 +27,6 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
      - ~~ITerm2 (https://iterm2.com/)~~ (Moved to cmux)
-     - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
      - Oh My Zsh with a generated `~/.zshrc` (put personal config in `~/.zshrc.personal.before` / `~/.zshrc.personal.after`)
        - auto-switches node version on `cd` when a `.nvmrc` is present
@@ -102,12 +101,23 @@ As I find the default MacOS dock is cluttered, this playbook will also remove th
 - Maps
 - Mail
 - Messages
-- Notes
 - TV
 - App Store
 - Safari
 - System Settings
 - FaceTime
+
+It then adds these to the dock (in this order, after whatever is already there): Apps, Photos, Calendar, Reminders, Music, Superhuman, WhatsApp, Notes, and the Downloads folder.
+
+### macOS defaults
+
+The playbook sets these preferences (captured from my machine with `defaults read`):
+
+- Dark mode (applies at next login)
+- Dock: auto-hide, 64px icons
+- Finder: column view, path bar shown, new windows open at Computer, no warning when changing a file extension, external drives shown on the desktop but not internal ones
+
+`bin/apply --tags defaults` or `bin/apply --tags dock` re-runs just that part.
 
 ### Default software clean up
 
@@ -128,7 +138,7 @@ Things the playbook can't do for you. In order:
 **After the playbook has run**
 1. Generate an SSH key and add it to GitHub: `ssh-keygen -t ed25519 -C "james@irving-swift.com"`, then `gh auth login` (which can upload the key for you).
 2. Open a new shell so the generated `~/.zshrc` is picked up, then re-run `bin/apply` if anything failed on the first pass.
-3. Sign in to the apps that need it: Raycast, Superhuman, Slack, WhatsApp, Claude, Google Drive, Discord, Steam, DataGrip, Warp.
+3. Sign in to the apps that need it: Raycast, Superhuman, Slack, WhatsApp, Claude, Google Drive, Discord, Steam, DataGrip.
 4. Secrets (API keys etc.) go in `~/.zshrc.personal.after`, never in the generated `~/.zshrc`.
 5. Open Xcode once to install its additional components, then Android Studio to let it download the SDK.
 6. Empty the Trash to finish removing the default Apple apps.

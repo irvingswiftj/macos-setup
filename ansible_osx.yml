@@ -27,7 +27,6 @@
         name: "{{ item }}"
       ignore_errors: yes
       with_items:
-        - warp
         - datagrip
         - superhuman
         - whatsapp
@@ -104,9 +103,11 @@
       become: true
       ignore_errors: true
 
-    # Clean up dock
+    # Dock: remove the default clutter, then add the apps I actually use. Each
+    # step uses --no-restart and the Dock is restarted once at the end, only if
+    # something changed. Re-run just this part with: bin/apply --tags dock
     - name: Clean up dock
-      shell: dockutil --remove '{{ item }}'
+      shell: dockutil --find '{{ item }}' && dockutil --remove '{{ item }}' --no-restart
       with_items:
         - Keynote
         - Numbers
@@ -116,13 +117,70 @@
         - Maps
         - Mail
         - Messages
-        - Notes
         - TV
         - App Store
         - Safari
         - System Settings
         - FaceTime
-      ignore_errors: true
+      register: dock_remove
+      failed_when: false
+      changed_when: dock_remove.rc == 0
+      tags: dock
+
+    - name: Add apps to dock
+      shell: dockutil --find '{{ item.name }}' || dockutil --add '{{ item.path }}' --no-restart
+      with_items:
+        - { name: Apps, path: /System/Applications/Apps.app }
+        - { name: Photos, path: /System/Applications/Photos.app }
+        - { name: Calendar, path: /System/Applications/Calendar.app }
+        - { name: Reminders, path: /System/Applications/Reminders.app }
+        - { name: Music, path: /System/Applications/Music.app }
+        - { name: Superhuman, path: /Applications/Superhuman.app }
+        - { name: WhatsApp, path: /Applications/WhatsApp.app }
+        - { name: Notes, path: /System/Applications/Notes.app }
+      register: dock_add
+      changed_when: "'added' in dock_add.stdout"
+      tags: dock
+
+    - name: Add Downloads folder to dock
+      shell: dockutil --find Downloads || dockutil --add ~/Downloads --section others --no-restart
+      register: dock_downloads
+      changed_when: "'added' in dock_downloads.stdout"
+      tags: dock
+
+    - name: Restart dock
+      shell: killall Dock
+      when: dock_remove.changed or dock_add.changed or dock_downloads.changed
+      tags: dock
+
+    # macOS preferences, captured from the machine with `defaults read`.
+    # Re-run just this part with: bin/apply --tags defaults
+    - name: Set macOS defaults
+      community.general.osx_defaults:
+        domain: "{{ item.domain }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+      with_items:
+        # Dark mode (takes effect at next login)
+        - { domain: NSGlobalDomain, key: AppleInterfaceStyle, type: string, value: Dark }
+        # Dock: auto-hide, 64px icons
+        - { domain: com.apple.dock, key: autohide, type: bool, value: true }
+        - { domain: com.apple.dock, key: tilesize, type: float, value: 64 }
+        # Finder: column view, path bar, open new windows at Computer, no "change extension?" nag
+        - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: clmv }
+        - { domain: com.apple.finder, key: ShowPathbar, type: bool, value: true }
+        - { domain: com.apple.finder, key: NewWindowTarget, type: string, value: PfCm }
+        - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false }
+        - { domain: com.apple.finder, key: ShowHardDrivesOnDesktop, type: bool, value: false }
+        - { domain: com.apple.finder, key: ShowExternalHardDrivesOnDesktop, type: bool, value: true }
+      register: osx_defaults
+      tags: defaults
+
+    - name: Restart Finder and Dock to pick up new defaults
+      shell: killall Finder Dock
+      when: osx_defaults.changed
+      tags: defaults
 
     - name: Install Oh My ZSH
       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
