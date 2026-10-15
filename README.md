@@ -20,16 +20,14 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
  - 👨‍💻 Developer tools:
    - DataGrip (https://www.jetbrains.com/datagrip)
    - Zed (https://zed.dev/)
-   - supacode (https://supacode.dev/) - command center for terminal coding agents
    - 💻 xCode
    - 📱 Android Studio
      - Android SDK platform-tools and command-line tools
      - bundletool (manipulate Android App Bundles)
    - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
-     - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
+     - ~~ITerm2 (https://iterm2.com/)~~ (Moved to cmux)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
-     - Ghostty (https://ghostty.org/)
      - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
      - Oh My Zsh with a generated `~/.zshrc` (put personal config in `~/.zshrc.personal.before` / `~/.zshrc.personal.after`)
      - Terminal commands
@@ -79,7 +77,6 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - Focusrite Control (Scarlett 2i2 driver)
  - 🛠️ Utilities
    - Raycast (https://www.raycast.com/store)
-   - GrandPerspective (visual disk usage)
    - Vorssaint (https://github.com/vorssaint/vorssaint-utils) - Menu bar toolkit with keep-awake, system monitor and volume mixer
 
 ### Dock clean up 🧹
