@@ -20,8 +20,11 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
  - 👨‍💻 Developer tools:
    - DataGrip (https://www.jetbrains.com/datagrip)
    - Zed (https://zed.dev/)
+   - supacode (https://supacode.dev/) - command center for terminal coding agents
    - 💻 xCode
    - 📱 Android Studio
+     - Android SDK platform-tools and command-line tools
+     - bundletool (manipulate Android App Bundles)
    - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
      - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
@@ -44,11 +47,24 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
        - ffmpeg
        - mysql-client
        - fastlane (build and release mobile apps)
+       - cocoapods (dependency manager for iOS projects)
+       - awscli (AWS command-line interface)
+       - doppler (secrets and config CLI)
+       - stripe (Stripe CLI, from the stripe/stripe-cli tap)
+       - gitleaks (audit git repos for secrets)
+       - mkcert (locally trusted dev certificates)
+       - nmap (port scanning)
+       - wget
+       - yt-dlp (audio/video downloader)
+       - vips (image processing library)
        - openai-whisper (speech recognition from the terminal)
    - Programming Languages
      - Python 3 (via Homebrew)
        - uv (fast Python package installer and resolver)
+       - pipx (run Python CLI tools in isolated environments)
      - Go
+     - Java 17 (openjdk@17, keg-only)
+     - PHP tooling: composer
      - nodejs (latest LTS, managed with nvm)
  - 📈 Productivity Tools
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
@@ -56,10 +72,14 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - Claude (https://claude.com/download)
    - Google Drive
    - Slack
+ - 🎮 Games & Chat
+   - Steam
+   - Discord
  - 🎼 Music Tools
    - Focusrite Control (Scarlett 2i2 driver)
  - 🛠️ Utilities
    - Raycast (https://www.raycast.com/store)
+   - GrandPerspective (visual disk usage)
    - Vorssaint (https://github.com/vorssaint/vorssaint-utils) - Menu bar toolkit with keep-awake, system monitor and volume mixer
 
 ### Dock clean up 🧹
