@@ -101,13 +101,14 @@ As I find the default MacOS dock is cluttered, this playbook will also remove th
 - Maps
 - Mail
 - Messages
+- Notes
 - TV
 - App Store
 - Safari
 - System Settings
 - FaceTime
 
-It then adds these to the dock (in this order, after whatever is already there): Apps, Photos, Calendar, Reminders, Music, Superhuman, WhatsApp, Notes, and the Downloads folder.
+It then adds these to the dock (in this order, after whatever is already there): Apps, Music, Superhuman, WhatsApp, and the Downloads folder.
 
 ### macOS defaults
 
