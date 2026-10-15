@@ -30,6 +30,7 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
      - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
      - Oh My Zsh with a generated `~/.zshrc` (put personal config in `~/.zshrc.personal.before` / `~/.zshrc.personal.after`)
+       - auto-switches node version on `cd` when a `.nvmrc` is present
      - Terminal commands
        - doctl (CLI for Digital Ocean)
        - fzf (Fuzzy Finder)
@@ -79,6 +80,17 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - Raycast (https://www.raycast.com/store)
    - Vorssaint (https://github.com/vorssaint/vorssaint-utils) - Menu bar toolkit with keep-awake, system monitor and volume mixer
 
+### Dotfiles
+
+The playbook also writes these from `templates/`. They are overwritten on every run, so change the template, not the file in `$HOME`:
+
+| File | Template | Notes |
+| --- | --- | --- |
+| `~/.zshrc` | `.zshrc.j2` | personal additions go in `~/.zshrc.personal.before` / `.after` |
+| `~/.gitconfig` | `.gitconfig.j2` | name/email come from `vars` at the top of the playbook; private config goes in `~/.gitconfig.local` |
+| `~/.config/git/ignore` | `gitignore_global` | global git ignore |
+| `~/.config/nvim/init.vim` | `init.vim` | Neovim config |
+
 ### Dock clean up 🧹
 
 As I find the default MacOS dock is cluttered, this playbook will also remove the following from the dock:
@@ -105,8 +117,22 @@ This script also removed the following:
 - Pages
 - iMovie
 
-After the script is complete, you will have to empty the Trash.
  
+## Manual steps
+
+Things the playbook can't do for you. In order:
+
+**Before running `bin/bootstrap`**
+1. Sign in to iCloud and the App Store (System Settings), otherwise the `mas install` tasks fail.
+
+**After the playbook has run**
+1. Generate an SSH key and add it to GitHub: `ssh-keygen -t ed25519 -C "james@irving-swift.com"`, then `gh auth login` (which can upload the key for you).
+2. Open a new shell so the generated `~/.zshrc` is picked up, then re-run `bin/apply` if anything failed on the first pass.
+3. Sign in to the apps that need it: Raycast, Superhuman, Slack, WhatsApp, Claude, Google Drive, Discord, Steam, DataGrip, Warp.
+4. Secrets (API keys etc.) go in `~/.zshrc.personal.after`, never in the generated `~/.zshrc`.
+5. Open Xcode once to install its additional components, then Android Studio to let it download the SDK.
+6. Empty the Trash to finish removing the default Apple apps.
+
 ## What could be considered missing?
 
 Currently, I have no need for the following packages and thus I have omitted them
