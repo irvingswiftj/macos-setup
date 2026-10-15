@@ -5,10 +5,13 @@ Article about how to run: https://irving-swift.com/setup-your-mac-with-ansible/
 
 ## How to run
 
+On a fresh Mac:
+
 ```
-$ ./setup.sh
 $ bin/bootstrap
 ```
+
+`bin/bootstrap` installs the Xcode Command Line Tools, Homebrew and Ansible (via Homebrew, so nothing touches the system Python), then runs the playbook. If the Command Line Tools dialog appears, let it finish and run `bin/bootstrap` again.
 
 To re-run the playbook later (e.g. after adding software), run `bin/apply`.
 
@@ -93,13 +96,3 @@ Currently, I have no need for the following packages and thus I have omitted the
 
 - Docker Desktop (replaced by OrbStack)
 - Kubernetes
-
-## Known Issues
-
-### PNPM error
-
-```
-ERR_PNPM_NO_GLOBAL_BIN_DIR  Unable to find the global bin directory\n\nRun \"pnpm setup\" to create it automatically, or set the global-bin-dir setting, or the PNPM_HOME env variable. The global bin directory should be in the PATH.\n
-```
-
-For some reason, `source ~/.zshrc` doesn't always seem to do the trick, if you get this error, just close your shell, open a new one and run `bin/apply`. 

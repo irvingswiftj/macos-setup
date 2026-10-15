@@ -65,13 +65,14 @@
         state: present
         update_homebrew: yes
 
-    - name: Source bash profile.
-      shell: source $HOME/.zshrc
-
     - name: "Install from Mac app store"
       shell: mas install {{ item }}
       with_items:
         - 497799835 # xcode
+
+    - name: Accept the Xcode licence
+      shell: xcodebuild -license accept
+      become: true
 
     - name: "Uninstall from Mac app store"
       shell: mas uninstall {{ item }}
@@ -126,16 +127,22 @@
         source /opt/homebrew/opt/nvm/nvm.sh
         nvm install --lts
         nvm alias default 'lts/*'
+        dirname "$(nvm which default)"
       args:
         executable: /bin/bash
+      register: nvm_node
 
+    # A shell task can't change the PATH of later tasks, so give the pnpm tasks
+    # the same PNPM_HOME and node PATH that templates/.zshrc.j2 sets up.
     - name: Run pnpm setup
       shell: pnpm setup
-
-    - name: Source bash profile.
-      shell: source $HOME/.zshrc
+      environment:
+        PNPM_HOME: "{{ lookup('env', 'HOME') }}/Library/pnpm"
 
     - name: Install EAS CLI node.js package.
       community.general.pnpm:
         name: eas-cli
         global: true
+      environment:
+        PNPM_HOME: "{{ lookup('env', 'HOME') }}/Library/pnpm"
+        PATH: "{{ lookup('env', 'HOME') }}/Library/pnpm:{{ nvm_node.stdout_lines[-1] }}:{{ lookup('env', 'PATH') }}"
