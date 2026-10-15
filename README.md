@@ -151,6 +151,8 @@ Things the playbook can't do for you. In order:
 brew install --cask --adopt <name>
 ```
 
+If that fails with `Operation not permitted` even though sudo accepted your password, macOS App Management is blocking changes to the app bundle. Grant your terminal (e.g. cmux) the permission under System Settings → Privacy & Security → App Management and run it again.
+
 **`KeyError: 'pop from an empty set'` in the homebrew task** — an old `community.general` collection. `bin/bootstrap` (or `ansible-galaxy install -r requirements.yml`) installs the pinned release, which needs ansible-core 2.18+. If `ansible --version` shows something older, it is a leftover pip install: `brew install ansible` and make sure `/opt/homebrew/bin` is first on your PATH.
 
 ## What could be considered missing?
