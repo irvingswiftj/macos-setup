@@ -1,2 +1,3 @@
 #!/bin/sh
-ansible-playbook -i "localhost," -c local ansible_osx.yml --ask-become-pass
+# Re-run the playbook. Extra args are passed through, e.g. bin/apply --tags dock
+ansible-playbook -i "localhost," -c local ansible_osx.yml --ask-become-pass "$@"
