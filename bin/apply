@@ -1,3 +1,13 @@
 #!/bin/sh
 # Re-run the playbook. Extra args are passed through, e.g. bin/apply --tags dock
-ansible-playbook -i "localhost," -c local ansible_osx.yml --ask-become-pass "$@"
+cd "$(dirname "$0")/.."
+
+# Use Homebrew's ansible (ansible-core >= 2.18, required by the pinned
+# community.general). An older pip-installed ansible crashes on some tasks.
+PLAYBOOK=/opt/homebrew/bin/ansible-playbook
+if [ ! -x "$PLAYBOOK" ]; then
+  echo "Homebrew ansible not found. Run: brew install ansible" >&2
+  exit 1
+fi
+
+"$PLAYBOOK" -i "localhost," -c local ansible_osx.yml --ask-become-pass "$@"

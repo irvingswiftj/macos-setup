@@ -22,9 +22,13 @@
           'stripe/stripe-cli',
         ]
 
+    # --adopt lets brew take over an app that was installed by hand (same
+    # version). If the versions differ, run `brew install --cask --force <name>`
+    # once by hand; see README.
     - name: Install core packages via brew casks
       community.general.homebrew_cask:
         name: "{{ item }}"
+        install_options: adopt
       ignore_errors: yes
       with_items:
         - datagrip
@@ -79,7 +83,7 @@
           'wget',
           'yt-dlp',
           'vips',
-          'stripe/stripe-cli/stripe'
+          'stripe'   # from the stripe/stripe-cli tap added above
         ]
         state: present
         update_homebrew: yes
