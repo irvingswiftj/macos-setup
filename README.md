@@ -5,7 +5,7 @@ Article about how to run: https://irving-swift.com/setup-your-mac-with-ansible/
 
 ## How to run
 
-On a fresh Mac:
+On a fresh Mac (Apple Silicon only, since every path assumes Homebrew lives in `/opt/homebrew`):
 
 ```
 $ bin/bootstrap

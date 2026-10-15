@@ -123,11 +123,14 @@
 
     - name: Install latest LTS node via nvm
       shell: |
+        set -e
         export NVM_DIR="$HOME/.nvm"
         source /opt/homebrew/opt/nvm/nvm.sh
         nvm install --lts
         nvm alias default 'lts/*'
-        dirname "$(nvm which default)"
+        node_path="$(nvm which default)"
+        [[ "$node_path" = /* ]] || { echo "nvm could not resolve the default node: '$node_path'" >&2; exit 1; }
+        dirname "$node_path"
       args:
         executable: /bin/bash
       register: nvm_node

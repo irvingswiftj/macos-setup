@@ -6,6 +6,13 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+# Everything here (and in the playbook and zshrc template) assumes Homebrew at
+# /opt/homebrew, i.e. an Apple Silicon Mac.
+if [ "$(uname -m)" != "arm64" ]; then
+  echo "This setup only supports Apple Silicon Macs (Homebrew at /opt/homebrew)." >&2
+  exit 1
+fi
+
 # Xcode Command Line Tools (git, compilers; required by Homebrew)
 if ! xcode-select -p >/dev/null 2>&1; then
   xcode-select --install
@@ -16,7 +23,13 @@ fi
 
 # Homebrew
 if [ ! -x /opt/homebrew/bin/brew ]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  installer="$(mktemp)"
+  trap 'rm -f "$installer"' 0
+  if ! curl -fsSL -o "$installer" https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh; then
+    echo "Failed to download the Homebrew installer." >&2
+    exit 1
+  fi
+  /bin/bash "$installer"
 fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
