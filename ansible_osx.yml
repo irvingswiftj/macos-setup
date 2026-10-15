@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  vars:
+    git_user_name: James Irving-Swift
+    git_user_email: james@irving-swift.com
   tasks:
     - name: Install homebrew
       include_role:
@@ -130,6 +133,37 @@
       template:
         src: templates/.zshrc.j2
         dest: /Users/{{ lookup('env', 'USER') }}/.zshrc
+        owner: "{{ lookup('env', 'USER') }}"
+        force: yes
+
+    # Dotfiles. Like ~/.zshrc these are overwritten on every run, so edit the
+    # copies in templates/ rather than the files in $HOME.
+    - name: Ensure dotfile directories exist
+      file:
+        path: "/Users/{{ lookup('env', 'USER') }}/{{ item }}"
+        state: directory
+      with_items:
+        - .config/nvim
+        - .config/git
+
+    - name: Create git config
+      template:
+        src: templates/.gitconfig.j2
+        dest: /Users/{{ lookup('env', 'USER') }}/.gitconfig
+        owner: "{{ lookup('env', 'USER') }}"
+        force: yes
+
+    - name: Create global git ignore
+      copy:
+        src: templates/gitignore_global
+        dest: /Users/{{ lookup('env', 'USER') }}/.config/git/ignore
+        owner: "{{ lookup('env', 'USER') }}"
+        force: yes
+
+    - name: Create Neovim config
+      copy:
+        src: templates/init.vim
+        dest: /Users/{{ lookup('env', 'USER') }}/.config/nvim/init.vim
         owner: "{{ lookup('env', 'USER') }}"
         force: yes
 

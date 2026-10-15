@@ -79,6 +79,34 @@ node() { _load_nvm; node "$@"; }
 npm()  { _load_nvm; npm "$@"; }
 npx()  { _load_nvm; npx "$@"; }
 
+# Auto-switch node version on `cd` when a .nvmrc is in scope. nvm itself is only
+# loaded the first time a .nvmrc is actually encountered, so startup stays fast.
+autoload -U add-zsh-hook
+_find_nvmrc() {
+  local d="$PWD"
+  while [ "$d" != "/" ]; do
+    [ -f "$d/.nvmrc" ] && { echo "$d/.nvmrc"; return; }
+    d="$(dirname "$d")"
+  done
+}
+load-nvmrc() {
+  local nvmrc_path="$(_find_nvmrc)"
+  if [ -n "$nvmrc_path" ]; then
+    nvm --version >/dev/null   # triggers the lazy load on first use
+    local nvmrc_node_version="$(nvm version "$(cat "$nvmrc_path")")"
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif whence -w nvm_find_nvmrc >/dev/null 2>&1 && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc   # also apply a .nvmrc in the directory the shell starts in
+
 # Tools that install themselves into ~/.local/bin (e.g. Claude Code, pipx).
 # Kept late so these win over older copies installed via pnpm/npm.
 export PATH="$HOME/.local/bin:$PATH"
