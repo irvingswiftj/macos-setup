@@ -97,18 +97,15 @@
       shell: xcodebuild -license accept
       become: true
 
-    # Skip apps that aren't installed. mas can't change ownership of apps that
-    # were installed as root (e.g. iMovie), so fall back to deleting the bundle.
+    # Skip apps that aren't installed; report a change only when mas removed one.
     - name: "Uninstall from Mac app store"
       shell: |
-        mas list | grep -q '^{{ item.id }} ' || exit 0
-        mas uninstall {{ item.id }} || rm -rf '/Applications/{{ item.name }}.app'
-        echo removed
+        mas list | grep -q '^{{ item }} ' || exit 0
+        mas uninstall {{ item }} && echo removed
       with_items:
-        - { id: 361285480, name: Keynote }
-        - { id: 361304891, name: Numbers }
-        - { id: 361309726, name: Pages }
-        - { id: 408981434, name: iMovie }
+        - 361285480 # Keynote
+        - 361304891 # Numbers
+        - 361309726 # Pages
       become: true
       register: mas_uninstall
       changed_when: "'removed' in mas_uninstall.stdout"

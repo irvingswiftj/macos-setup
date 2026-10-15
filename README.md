@@ -122,11 +122,10 @@ The playbook sets these preferences (captured from my machine with `defaults rea
 
 ### Default software clean up
 
-This script also removes the following (via `mas uninstall`, or by deleting the app bundle when mas can't because the app is owned by root):
+This script also removes the following via `mas uninstall`:
 - Keynote
 - Numbers
 - Pages
-- iMovie
 
  
 ## Manual steps
