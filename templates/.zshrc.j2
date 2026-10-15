@@ -105,6 +105,7 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
+load-nvmrc   # also apply a .nvmrc in the directory the shell starts in
 
 # Tools that install themselves into ~/.local/bin (e.g. Claude Code, pipx).
 # Kept late so these win over older copies installed via pnpm/npm.
