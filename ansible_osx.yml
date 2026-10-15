@@ -37,6 +37,7 @@
         - claude
         - vorssaint
         - cmux
+        - zed
         - supacode
         - discord
         - steam
@@ -66,7 +67,6 @@
           'fastlane',
           'python3',
           'openai-whisper',
-          'zed',
           'awscli',
           'bundletool',
           'cocoapods',
