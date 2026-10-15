@@ -53,6 +53,7 @@
           'pnpm',
           'gitmoji',
           'neovim',
+          'nvm',
           'ffmpeg',
           'mysql-client',
           'uv',
@@ -113,6 +114,20 @@
         dest: /Users/{{ lookup('env', 'USER') }}/.zshrc
         owner: "{{ lookup('env', 'USER') }}"
         force: yes
+
+    - name: Ensure nvm working directory exists
+      file:
+        path: "/Users/{{ lookup('env', 'USER') }}/.nvm"
+        state: directory
+
+    - name: Install latest LTS node via nvm
+      shell: |
+        export NVM_DIR="$HOME/.nvm"
+        source /opt/homebrew/opt/nvm/nvm.sh
+        nvm install --lts
+        nvm alias default 'lts/*'
+      args:
+        executable: /bin/bash
 
     - name: Run pnpm setup
       shell: pnpm setup
