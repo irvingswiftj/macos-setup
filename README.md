@@ -122,11 +122,10 @@ The playbook sets these preferences (captured from my machine with `defaults rea
 
 ### Default software clean up
 
-This script also removed the following:
+This script also removes the following via `mas uninstall`:
 - Keynote
 - Numbers
 - Pages
-- iMovie
 
  
 ## Manual steps
@@ -146,10 +145,10 @@ Things the playbook can't do for you. In order:
 
 ## Troubleshooting
 
-**`It seems there is already an App at '/Applications/X.app'`** — the app was installed by hand, not by Homebrew. The playbook passes `--adopt` so brew takes over apps whose version matches the cask. If the versions differ, run this once and re-run `bin/apply`:
+**`It seems there is already an App at '/Applications/X.app'`** or **`sudo: a terminal is required`** in the cask task — the app was installed by hand, not by Homebrew. The playbook passes `--adopt`, but brew usually needs `sudo` to fix the app's permissions, and it can't prompt for a password from inside Ansible. Run this once in a terminal (use `--force` instead of `--adopt` if the installed version differs from the cask), then re-run `bin/apply`:
 
 ```
-brew install --cask --force <name>
+brew install --cask --adopt <name>
 ```
 
 **`KeyError: 'pop from an empty set'` in the homebrew task** — an old `community.general` collection. `bin/bootstrap` (or `ansible-galaxy install -r requirements.yml`) installs the pinned release, which needs ansible-core 2.18+. If `ansible --version` shows something older, it is a leftover pip install: `brew install ansible` and make sure `/opt/homebrew/bin` is first on your PATH.

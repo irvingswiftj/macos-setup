@@ -97,14 +97,18 @@
       shell: xcodebuild -license accept
       become: true
 
+    # Skip apps that aren't installed; report a change only when mas removed one.
     - name: "Uninstall from Mac app store"
-      shell: mas uninstall {{ item }}
+      shell: |
+        mas list | grep -q '^{{ item }} ' || exit 0
+        mas uninstall {{ item }} && echo removed
       with_items:
-      - 409183694 #keynote
-      - 409203825 #numbers
-      - 409201541 #pages
-      - 408981434 #imovie
+        - 361285480 # Keynote
+        - 361304891 # Numbers
+        - 361309726 # Pages
       become: true
+      register: mas_uninstall
+      changed_when: "'removed' in mas_uninstall.stdout"
       ignore_errors: true
 
     # Dock: remove the default clutter, then add the apps I actually use. Each

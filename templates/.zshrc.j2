@@ -58,7 +58,7 @@ _nvm_resolve() {
     if [ -f "$NVM_DIR/alias/$v" ]; then v="$(cat "$NVM_DIR/alias/$v")"; continue; fi
     local -a m
     m=( "$NVM_DIR/versions/node/v${v#v}"*(N) )
-    [ ${#m} -gt 0 ] && printf '%s\n' "${m[@]}" | sort -V | tail -1 | sed 's|.*/||'
+    [ -n "${m[1]}" ] && printf '%s\n' "${m[@]}" | sort -V | tail -1 | sed 's|.*/||'
     return
   done
 }
