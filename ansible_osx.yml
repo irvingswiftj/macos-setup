@@ -16,7 +16,7 @@
     - name: 'add custom homebrew repos'
       community.general.homebrew_tap:
         name: [
-          #homebrew/cask-versions,
+          'stripe/stripe-cli',
         ]
 
     - name: Install core packages via brew casks
@@ -28,7 +28,6 @@
         - datagrip
         - superhuman
         - whatsapp
-        - ghostty
         - raycast
         - google-drive
         - android-studio
@@ -37,6 +36,12 @@
         - claude
         - vorssaint
         - cmux
+        - zed
+        - discord
+        - steam
+        - focusrite-control
+        - android-platform-tools
+        - android-commandlinetools
 
     - name: "Install homebrew packages"
       community.general.homebrew:
@@ -49,7 +54,6 @@
           'mas',
           'gh',
           'go',
-          'focusrite-control',
           'pnpm',
           'gitmoji',
           'neovim',
@@ -60,7 +64,20 @@
           'fastlane',
           'python3',
           'openai-whisper',
-          'zed'
+          'awscli',
+          'bundletool',
+          'cocoapods',
+          'composer',
+          'doppler',
+          'gitleaks',
+          'mkcert',
+          'nmap',
+          'openjdk@17',
+          'pipx',
+          'wget',
+          'yt-dlp',
+          'vips',
+          'stripe/stripe-cli/stripe'
         ]
         state: present
         update_homebrew: yes

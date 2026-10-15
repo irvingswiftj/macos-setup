@@ -22,11 +22,12 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - Zed (https://zed.dev/)
    - 💻 xCode
    - 📱 Android Studio
+     - Android SDK platform-tools and command-line tools
+     - bundletool (manipulate Android App Bundles)
    - 🐳 OrbStack (https://orbstack.dev/)
    - 🖥️ Terminal
-     - ~~ITerm2 (https://iterm2.com/)~~ (Moved to Ghostty)
+     - ~~ITerm2 (https://iterm2.com/)~~ (Moved to cmux)
      - Warp (Referral link: https://app.warp.dev/referral/MELL3R)
-     - Ghostty (https://ghostty.org/)
      - cmux (https://www.cmux.dev/) - Ghostty-based terminal with vertical tabs and notifications for AI coding agents
      - Oh My Zsh with a generated `~/.zshrc` (put personal config in `~/.zshrc.personal.before` / `~/.zshrc.personal.after`)
      - Terminal commands
@@ -44,11 +45,24 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
        - ffmpeg
        - mysql-client
        - fastlane (build and release mobile apps)
+       - cocoapods (dependency manager for iOS projects)
+       - awscli (AWS command-line interface)
+       - doppler (secrets and config CLI)
+       - stripe (Stripe CLI, from the stripe/stripe-cli tap)
+       - gitleaks (audit git repos for secrets)
+       - mkcert (locally trusted dev certificates)
+       - nmap (port scanning)
+       - wget
+       - yt-dlp (audio/video downloader)
+       - vips (image processing library)
        - openai-whisper (speech recognition from the terminal)
    - Programming Languages
      - Python 3 (via Homebrew)
        - uv (fast Python package installer and resolver)
+       - pipx (run Python CLI tools in isolated environments)
      - Go
+     - Java 17 (openjdk@17, keg-only)
+     - PHP tooling: composer
      - nodejs (latest LTS, managed with nvm)
  - 📈 Productivity Tools
    - Superhuman (Referral link: https://superhuman.com/refer/tnw03qfq)
@@ -56,6 +70,9 @@ To re-run the playbook later (e.g. after adding software), run `bin/apply`.
    - Claude (https://claude.com/download)
    - Google Drive
    - Slack
+ - 🎮 Games & Chat
+   - Steam
+   - Discord
  - 🎼 Music Tools
    - Focusrite Control (Scarlett 2i2 driver)
  - 🛠️ Utilities
